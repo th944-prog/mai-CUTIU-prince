@@ -37,6 +37,30 @@
             position: relative;
         }
 
+        /* Top Notification Bar for Audio Activation */
+        .audio-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--dark-pink);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 4px solid var(--border-color);
+            z-index: 9999;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.4s ease-out;
+        }
+
         .window-container {
             background: white;
             border: 4px solid var(--border-color);
@@ -48,6 +72,7 @@
             animation: fadeIn 0.3s ease-out;
             position: relative;
             z-index: 10;
+            margin-top: 40px;
         }
 
         .window-container.active {
@@ -231,6 +256,10 @@
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
         @keyframes textPop {
             from { transform: translateY(0) scale(1); }
             to { transform: translateY(-5px) scale(1.05); }
@@ -243,7 +272,12 @@
 </head>
 <body>
 
-    <!-- Direct Global CDN Track Link with Auto Audio Context Hooks -->
+    <!-- Top Banner to satisfy mobile security features directly -->
+    <div class="audio-banner" id="audio-auth-zone" onclick="primeAudioEngine()">
+        <span>🎵 TAP HERE TO UNMUTE MUSIC FIRST 🎵</span>
+    </div>
+
+    <!-- Audio Element -->
     <audio id="bg-music" src="https://files.catbox.moe/97w53z.mp3" preload="auto" crossorigin="anonymous" loop></audio>
 
     <svg id="cat-template" style="display:none;" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +291,7 @@
     <!-- PHASE 1: Envelope Entrance -->
     <div id="phase1" class="window-container active" style="max-width: 400px;">
         <div class="window-content">
-            <div class="envelope-wrapper" id="target-envelope">
+            <div class="envelope-wrapper" onclick="openEnvelope()">
                 <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 4H22V20H2V4Z" fill="white" stroke="#5c001e" stroke-width="2"/>
                     <path d="M2 4L12 13L22 4" stroke="#5c001e" stroke-width="2"/>
@@ -349,36 +383,36 @@
 
     <script>
         const audio = document.getElementById('bg-music');
-        const envelope = document.getElementById('target-envelope');
+        const banner = document.getElementById('audio-auth-zone');
+        let audioPrimed = false;
 
-        // Bypasses browser blocking systems directly through clean interaction capturing
-        function forceAudioPlay() {
-            audio.currentTime = 52;
-            
-            // Primary execution hook
-            const playPromise = audio.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    console.log("Audio Engine Active.");
-                }).catch(error => {
-                    // Force backup track instantiation
-                    audio.load();
-                    audio.currentTime = 52;
-                    audio.play();
-                });
+        // Step 1: User clears the browser block by tapping the top banner
+        function primeAudioEngine() {
+            audio.play().then(() => {
+                audio.currentTime = 52;
+                audioPrimed = true;
+                banner.style.background = "#c8e6c9";
+                banner.style.color = "#5c001e";
+                banner.innerHTML = "🎵 MUSIC UNLOCKED successfully! Now open the envelope below. 🎵";
+                setTimeout(() => {
+                    banner.style.display = 'none';
+                }, 2500);
+            }).catch(err => {
+                console.log("Waiting for formal gesture interactions.");
+            });
+        }
+
+        // Step 2: Main envelope opening interaction sequence
+        function openEnvelope() {
+            if (!audioPrimed) {
+                // Emergency catch-all play request if they skip the banner
+                audio.currentTime = 52;
+                audio.play();
             }
-            
             goToPhase(2);
             initializeButtonPosition();
             startBouncingCats();
         }
-
-        // Monitors clean touch events explicitly for high-security mobile layouts
-        envelope.addEventListener('click', forceAudioPlay);
-        envelope.addEventListener('touchstart', function(e) {
-            forceAudioPlay();
-        });
 
         function goToPhase(phaseNumber) {
             document.querySelectorAll('.window-container').forEach(win => {
@@ -467,5 +501,5 @@
         });
     </script>
 </body>
-            </html>
-    
+        </html>
+        
