@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Twin ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+width:100%;
+height:100%;
+overflow:hidden;
+font-family:'Press Start 2P',cursive;
+background:#ffd8f2;
+}
+
+body{
+
+background:
+linear-gradient(#ffd7f2,#ffc7eb,#ffbce7);
+
+}
+
+.screen{
+
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:.8s;
+overflow:hidden;
+
+}
+
+.hide{
+
+opacity:0;
+pointer-events:none;
+
+}
+
+.sky{
+
+position:absolute;
+width:100%;
+height:100%;
+overflow:hidden;
+
+}
+
+.cloud{
+
+position:absolute;
+font-size:70px;
+opacity:.55;
+animation:cloudMove linear infinite;
+
+}
+
+.cloud:nth-child(1){
+
+top:8%;
+left:-20%;
+animation-duration:24s;
+
+}
+
+.cloud:nth-child(2){
+
+top:18%;
+left:-40%;
+animation-duration:30s;
+
+}
+
+.cloud:nth-child(3){
+
+top:35%;
+left:-25%;
+animation-duration:35s;
+
+}
+
+@keyframes cloudMove{
+
+100%{
+
+transform:translateX(170vw);
+
+}
+
+}
+
+.title{
+
+font-size:18px;
+text-align:center;
+line-height:1.8;
+color:#ff2c8b;
+text-shadow:3px 3px white;
+padding:25px;
+
+}
+
+.sub{
+
+font-size:10px;
+margin-top:12px;
+color:#666;
+
+}
+
+.catArea{
+
+margin-top:45px;
+
+display:grid;
+
+grid-template-columns:repeat(3,80px);
+
+gap:18px;
+
+justify-content:center;
+
+}
+
+.cat{
+
+width:72px;
+height:72px;
+cursor:pointer;
+transition:.25s;
+animation:bounce .6s infinite alternate;
+
+}
+
+.cat:nth-child(2){
+
+animation-delay:.1s;
+
+}
+
+.cat:nth-child(3){
+
+animation-delay:.2s;
+
+}
+
+.cat:nth-child(4){
+
+animation-delay:.3s;
+
+}
+
+.cat:nth-child(5){
+
+animation-delay:.4s;
+
+}
+
+.cat:nth-child(6){
+
+animation-delay:.5s;
+
+}
+
+.cat img{
+
+width:100%;
+image-rendering:pixelated;
+
+}
+
+@keyframes bounce{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+100%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+.pixelHeart{
+
+position:absolute;
+font-size:20px;
+animation:floatUp linear forwards;
+
+pointer-events:none;
+
+}
+
+@keyframes floatUp{
+
+0%{
+
+transform:translateY(100vh);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh);
+
+opacity:0;
+
+}
+
+}
+
+.box{
+
+width:90%;
+max-width:380px;
+
+background:white;
+
+border:6px solid hotpink;
+
+border-radius:16px;
+
+padding:22px;
+
+box-shadow:0 0 25px pink;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.question{
+
+font-size:12px;
+
+line-height:2;
+
+text-align:center;
+
+color:#ff2c8b;
+
+}
+
+.btn{
+
+margin-top:22px;
+
+padding:16px 20px;
+
+border:none;
+
+border-radius:12px;
+
+font-family:'Press Start 2P';
+
+font-size:10px;
+
+cursor:pointer;
+
+}
+
+#yes{
+
+background:#95ff9b;
+
+}
+
+#no{
+
+background:#ff9696;
+
+position:absolute;
+
+}
+
+#message{
+
+margin-top:28px;
+
+font-size:10px;
+
+line-height:1.8;
+
+text-align:center;
+
+color:#666;
+
+min-height:55px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="screen" id="screen1">
+
+<div class="sky">
+
+<div class="cloud">☁️</div>
+<div class="cloud">☁️</div>
+<div class="cloud">☁️</div>
+
+</div>
+
+<div class="title">
+
+Someone has been waiting for you... ❤️
+
+</div>
+
+<div class="sub">
+
+Tap any kitty.
+
+</div>
+
+<div class="catArea">
+
+<div class="cat"><img src="https://media.tenor.com/6Zp8Q5xQ3q8AAAAi/cat-dance.gif"></div>
+
+<div class="cat"><img src="https://media.tenor.com/6Zp8Q5xQ3q8AAAAi/cat-dance.gif"></div>
+
+<div class="cat"><img src="https://media.tenor.com/6Zp8Q5xQ3q8AAAAi/cat-dance.gif"></div>
+
+<div class="cat"><img src="https://media.tenor.com/6Zp8Q5xQ3q8AAAAi/cat-dance.gif"></div>
+
+<div class="cat"><img src="https://media.tenor.com/6Zp8Q5xQ3q8AAAAi/cat-dance.gif"></div>
+
+<div class="cat"><img src="https://media.tenor.com/6Zp8Q5xQ3q8AAAAi/cat-dance.gif"></div>
+
+</div>
+
+</div><div class="screen hide" id="screen2">
+
+<div class="box">
+
+<div class="question">
+
+Do you love me or care about me twin? 🥺<br><br>
+
+Just curious 🙇
+
+</div>
+
+<button class="btn" id="yes">
+
+🐷 YES I DO
+
+</button>
+
+<button class="btn" id="no">
+
+🙅 NO I DON'T
+
+</button>
+
+<div id="message">
+
+The kitties are watching... 🐱
+
+</div>
+
+</div>
+
+</div>
+
+<div class="screen hide" id="screen3">
+
+<div id="stars"></div>
+
+<div id="walkingCat">
+
+<img
+src="https://media.tenor.com/6Zp8Q5xQ3q8AAAAi/cat-dance.gif"
+style="width:90px;image-rendering:pixelated;">
+
+</div>
+
+<div id="envelope"
+
+style="display:none;
+font-size:95px;
+cursor:pointer;
+animation:jump 1s infinite;">
+
+💌
+
+</div>
+
+<div id="letter"
+
+style="
+display:none;
+width:92%;
+max-width:420px;
+background:white;
+border:6px dashed hotpink;
+border-radius:18px;
+padding:24px;
+font-family:'Pacifico',cursive;
+font-size:25px;
+line-height:1.8;
+color:#ff2c8b;
+box-shadow:0 0 30px pink;
+max-height:70vh;
+overflow:auto;
+">
+
+<p id="typing"></p>
+
+</div>
+
+</div>
+
+<style>
+
+#walkingCat{
+
+position:absolute;
+
+left:-120px;
+
+bottom:120px;
+
+transition:6s linear;
+
+}
+
+@keyframes jump{
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+}
+
+.spark{
+
+position:absolute;
+
+font-size:22px;
+
+animation:sparkle 1.4s infinite;
+
+}
+
+@keyframes sparkle{
+
+50%{
+
+transform:scale(1.5);
+
+opacity:.5;
+
+}
+
+}
+
+</style>
+
+<script>
+
+const screen1=document.getElementById("screen1");
+
+const screen2=document.getElementById("screen2");
+
+const screen3=document.getElementById("screen3");
+
+const cats=document.querySelectorAll(".cat");
+
+cats.forEach(cat=>{
+
+cat.onclick=()=>{
+
+screen1.classList.add("hide");
+
+screen2.classList.remove("hide");
+
+moveNo();
+
+}
+
+});
+
+const no=document.getElementById("no");
+
+const yes=document.getElementById("yes");
+
+const funny=[
+
+"Nice try 😼",
+
+"The cats protected NO 🐱",
+
+"Button escaped 😂",
+
+"Illegal choice 🚨",
+
+"Try YES instead 🌸",
+
+"Even the unicorn said nope 🦄",
+
+"Too slow 🤭",
+
+"You almost got it 🐷",
+
+"No has nine lives 😹",
+
+"The kitties disagree 💖"
+
+];
+
+function moveNo(){
+
+let x=Math.random()*(window.innerWidth-170);
+
+let y=Math.random()*(window.innerHeight-120);
+
+no.style.left=x+"px";
+
+no.style.top=y+"px";
+
+}
+
+no.addEventListener("mouseover",()=>{
+
+moveNo();
+
+message.innerHTML=
+
+funny[Math.floor(Math.random()*funny.length)];
+
+});
+
+no.addEventListener("touchstart",(e)=>{
+
+e.preventDefault();
+
+moveNo();
+
+message.innerHTML=
+
+funny[Math.floor(Math.random()*funny.length)];
+
+});
+yes.onclick=()=>{
+
+screen2.classList.add("hide");
+
+screen3.classList.remove("hide");
+
+const cat=document.getElementById("walkingCat");
+
+setTimeout(()=>{
+
+cat.style.left="38%";
+
+},200);
+
+setTimeout(()=>{
+
+document.getElementById("envelope").style.display="block";
+
+},6200);
+
+};
+
+const envelope=document.getElementById("envelope");
+
+const letter=document.getElementById("letter");
+
+const typing=document.getElementById("typing");
+
+const text=`
+
+I swear,
+
+our daily yapping sessions on IG are literally the best part of my day. 💕
+
+I love how we can talk about absolutely everything and nothing all at once.
+
+I've gotten so incredibly attached to you and the vibe we have,
+
+mai bardiya ko baghini. 🐯
+
+Even though we're online and I don't always know exactly where we stand,
+
+I just wanted to let you know
+
+that you're super special to me,
+
+and I'm so glad you're in my life,
+
+twin. ❤️
+
+Made with way too much attachment.
+
+— Your Twin 🐷❤️
+
+`;
+
+envelope.onclick=()=>{
+
+envelope.style.display="none";
+
+letter.style.display="block";
+
+typing.innerHTML="";
+
+let i=0;
+
+function write(){
+
+if(i<text.length){
+
+typing.innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(write,32);
+
+}else{
+
+celebrate();
+
+}
+
+}
+
+write();
+
+};
+
+function heart(){
+
+const h=document.createElement("div");
+
+h.className="pixelHeart";
+
+h.innerHTML=["💖","💕","💗","🌸","✨"][Math.floor(Math.random()*5)];
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=(18+Math.random()*18)+"px";
+
+h.style.animationDuration=(6+Math.random()*3)+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+
+h.remove();
+
+},9000);
+
+}
+
+setInterval(heart,320);
+
+for(let i=0;i<25;i++){
+
+setTimeout(heart,i*150);
+
+}
+function celebrate(){
+
+for(let i=0;i<100;i++){
+
+const c=document.createElement("div");
+
+c.innerHTML=["✨","💖","🌸","⭐","🦄","💕"][Math.floor(Math.random()*6)];
+
+c.style.position="fixed";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.top="-50px";
+
+c.style.fontSize=(16+Math.random()*18)+"px";
+
+c.style.pointerEvents="none";
+
+c.style.transition="4s linear";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+
+c.style.transform=
+"translateY(120vh) rotate("+(Math.random()*720)+"deg)";
+
+},20);
+
+setTimeout(()=>{
+
+c.remove();
+
+},4200);
+
+}
+
+setTimeout(()=>{
+
+const end=document.createElement("div");
+
+end.style.position="fixed";
+
+end.style.left="50%";
+
+end.style.top="50%";
+
+end.style.transform="translate(-50%,-50%)";
+
+end.style.background="rgba(255,255,255,.95)";
+
+end.style.padding="20px";
+
+end.style.border="6px solid hotpink";
+
+end.style.borderRadius="18px";
+
+end.style.boxShadow="0 0 25px pink";
+
+end.style.fontFamily="'Press Start 2P'";
+
+end.style.fontSize="12px";
+
+end.style.lineHeight="2";
+
+end.style.color="#ff2c8b";
+
+end.style.textAlign="center";
+
+end.innerHTML=`
+
+🏆 Achievement Unlocked
+
+<br><br>
+
+Favorite Twin 💖
+
+`;
+
+document.body.appendChild(end);
+
+},1800);
+
+}
+
+window.addEventListener("resize",moveNo);
+
+document.addEventListener("contextmenu",e=>e.preventDefault());
+
+document.addEventListener("dragstart",e=>e.preventDefault());
+
+</script>
+
+</body>
+
+</html>
